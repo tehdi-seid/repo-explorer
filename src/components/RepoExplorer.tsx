@@ -50,9 +50,9 @@ function RepoExplorer({ userName }: { userName: string }) {
         state.repos.map((repo) => (
           <div
             key={repo.id}
-            className="flex gap-5 flex-col border border-gray-400 p-7 text-gray-800 rounded-2xl bg-gray-300 shadow-md shadow-gray-400 justify-between"
+            className="flex gap-5 flex-col border border-gray-400 p-7 text-gray-800 rounded-2xl bg-gray-300 shadow-md shadow-gray-400 justify-between hover:scale-102 transition-transform duration-300 ease-out"
           >
-            <div className="flex justify-between items-center gap-3">
+            <div className="flex justify-between items-center gap-3 capitalize">
               <h3 className="text-2xl font-bold text-purple-900">
                 {repo.name}
               </h3>
@@ -64,15 +64,15 @@ function RepoExplorer({ userName }: { userName: string }) {
                 <GoArrowUpRight className="p-0.5 text-xl ml-2" />
               </a>
             </div>
-            <p>
+            <div className="capitalize">
               {repo.description === null ? (
                 <p className="text-center">no description.</p>
               ) : (
                 repo.description
               )}
-            </p>
+            </div>
 
-            <div className="flex justify-between border-t items-center border-t-purple-300">
+            <div className="flex justify-between border-t items-center border-t-purple-400">
               <div className="text-xl capitalize font-semibold">
                 {repo.stargazers_count === 0 ? (
                   <p className="line-through">stars</p>

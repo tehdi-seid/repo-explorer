@@ -39,7 +39,7 @@ function SearchForm({ onSearch }: { onSearch: (userName: string) => void }) {
           onChange={(e) => handleInpuet(e)}
           className="w-full outline-0 px-5 py-2 text-[18px] placeholder:text-md "
         />
-        <div className="absolute right-0 top-0 flex justify-center items-center h-full rounded-r-full bg-purple-900 px-4 text-gray-300 font-bold">
+        <div className="absolute right-0 top-0 flex justify-center items-center h-full rounded-r-full bg-purple-900 px-4 text-gray-300 font-bold border border-purple-900">
           <button type="submit" className="text-2xl cursor-pointer">
             <FaMagnifyingGlass />
           </button>
