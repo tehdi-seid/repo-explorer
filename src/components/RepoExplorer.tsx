@@ -39,7 +39,7 @@ function RepoExplorer({ userName }: { userName: string }) {
   }, [userName]);
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] gap-4 mt-7">
       <div className="col-span-full flex justify-between capitalize">
         <h2 className="text-4xl font-bold">repos</h2>
         <select className="border rounded-lg px-5 capitalize outline-0">
@@ -51,15 +51,19 @@ function RepoExplorer({ userName }: { userName: string }) {
         state.repos.map((repo) => (
           <div
             key={repo.id}
-            className="flex gap-5 flex-col border border-gray-400 p-7 text-gray-800 rounded-2xl bg-gray-200 shadow-md shadow-gray-400"
+            className="flex gap-5 flex-col border border-gray-400 p-7 text-gray-800 rounded-2xl bg-gray-300 shadow-md shadow-gray-400 justify-between"
           >
-            <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center gap-3">
               <h3 className="text-2xl font-bold text-purple-900">
                 {repo.name}
               </h3>
-              <h4 className="text-md font-semibold border border-purple-400 px-4 py-1 rounded-4xl bg-purple-200 shadow-md shadow-purple-300">
-                {repo.language ? repo.language : "no-name"}
-              </h4>
+              <a
+                href={repo.clone_url}
+                className="flex items-center justify-center hover:text-purple-950 text-[16px] hover:text-shadow-sm hover:text-shadow-purple-400 transition-all duration-300m ease-out text-purple-900"
+              >
+                see repository
+                <GoArrowUpRight className="p-0.5 text-xl ml-2" />
+              </a>
             </div>
             <p>
               {repo.description === null ? (
@@ -77,13 +81,10 @@ function RepoExplorer({ userName }: { userName: string }) {
                   <p>stars: {repo.stargazers_count}</p>
                 )}
               </div>
-              <a
-                href={repo.clone_url}
-                className="flex items-center mt-2 justify-center hover:text-purple-950 text-[16px] hover:text-shadow-sm hover:text-shadow-purple-400"
-              >
-                see repository
-                <GoArrowUpRight className="p-0.5 text-xl ml-2" />
-              </a>
+
+              <h4 className="text-md font-semibold border border-purple-400 px-4 py-1 rounded-4xl bg-purple-200 shadow-md shadow-purple-300  mt-2">
+                {repo.language ? repo.language : "no language"}
+              </h4>
             </div>
           </div>
         ))}
