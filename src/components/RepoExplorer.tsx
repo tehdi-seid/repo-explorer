@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchRepo } from "../lib/github";
 import { type Repo } from "../lib/github";
-import { RiStarSLine } from "react-icons/ri";
 import { GoArrowUpRight } from "react-icons/go";
 
 type state =
@@ -23,7 +22,7 @@ function RepoExplorer({ userName }: { userName: string }) {
     async function featch() {
       setState({ status: "loading" });
       try {
-        const repo = await fetchRepo(userName, controller);
+        const repo = await fetchRepo(userName, controller.signal);
         setState({ status: "success", repos: repo });
         console.log(repo);
       } catch (err) {

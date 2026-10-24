@@ -20,13 +20,16 @@ export class GithubError extends Error {
 
 export async function fetchRepo(
   userName: string,
-  signal?: AbortController,
+  signal?: AbortSignal,
 ): Promise<Repo[]> {
   const url = new URL(
     `https://api.github.com/users/${encodeURIComponent(userName)}/repos`,
   );
 
-  const res = await fetch(url);
+  const res = await fetch(url, {
+    signal,
+    headers: { Accept: "application/vnd.github+json" },
+  });
 
   const data = (await res.json()) as Repo[];
   console.log(data);
@@ -37,4 +40,4 @@ export async function fetchRepo(
   return data;
 }
 
-export function sortRepos(repo: Repo[], sortKey: string) {}
+// export function sortRepos(repo: Repo[], sortKey: string) {}
