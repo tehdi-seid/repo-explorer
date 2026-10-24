@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="">
-      <h1 className="text-6xl font-bold mx-auto w-max bg-linear-90 from-indigo-900 to-purple-900 text-transparent bg-clip-text mt-5">
+      <h1 className="md:text-6xl text-3xl font-bold mx-auto w-max bg-linear-90 from-indigo-900 to-purple-900 text-transparent bg-clip-text mt-5">
         Repo-expolorer
       </h1>
       <SearchForm onSearch={setUserName} />
